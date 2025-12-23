@@ -4,6 +4,7 @@ import com.ryan.ddd.app.demo.command.handler.CreateDemoCommandHandler;
 import com.ryan.ddd.app.demo.query.handler.GetDemoDetailQueryHandler;
 import com.ryan.ddd.app.demo.query.query.DemoQueries;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;
+import com.ryan.ddd.shared.outbox.OutboxRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 public class AppWiringConfig {
 
   @Bean
-  public CreateDemoCommandHandler createDemoCommandHandler(DemoRepository demoRepository) {
-    return new CreateDemoCommandHandler(demoRepository);
+  public CreateDemoCommandHandler createDemoCommandHandler(DemoRepository demoRepository, OutboxRepository outboxRepository) {
+    return new CreateDemoCommandHandler(demoRepository, outboxRepository);
   }
 
   @Bean

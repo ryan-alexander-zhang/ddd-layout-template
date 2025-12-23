@@ -21,3 +21,7 @@ mybatis-plus:
     map-underscore-to-camel-case: true
   type-handlers-package: com.ryan.ddd.infra.common.persistence
 
+outbox:
+  publisher:
+    fixedDelayMs: 2000
+

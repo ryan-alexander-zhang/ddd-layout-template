@@ -14,6 +14,7 @@
     <module>ddd-layout-template-app</module>
     <module>ddd-layout-template-domain</module>
     <module>ddd-layout-template-adapter</module>
+    <module>ddd-layout-template-shared</module>
   </modules>
 
   <properties>
@@ -70,6 +71,11 @@
       <dependency>
         <groupId>com.ryan.ddd</groupId>
         <artifactId>ddd-layout-template-app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.ryan.ddd</groupId>
+        <artifactId>ddd-layout-template-shared</artifactId>
         <version>${project.version}</version>
       </dependency>
       <!-- Internal modules for version alignment end-->

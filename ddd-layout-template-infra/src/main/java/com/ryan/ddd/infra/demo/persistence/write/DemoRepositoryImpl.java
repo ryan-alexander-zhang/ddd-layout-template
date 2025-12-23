@@ -4,7 +4,6 @@ import com.ryan.ddd.domain.demo.model.Demo;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;
 import com.ryan.ddd.infra.demo.persistence.write.mapper.DemoMapper;
 import com.ryan.ddd.infra.demo.persistence.write.po.DemoPO;
-import java.util.UUID;
 import org.springframework.stereotype.Repository;
 
 @Repository

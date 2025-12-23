@@ -1,0 +1,8 @@
+package com.ryan.ddd.shared.outbox;
+
+public class OutboxStatus {
+  public static final String PENDING = "PENDING";
+  public static final String SENT = "SENT";
+  public static final String PROCESSING = "PROCESSING";
+  public static final String DEAD = "DEAD";
+}

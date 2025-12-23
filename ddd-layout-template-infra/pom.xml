@@ -28,6 +28,10 @@
       <groupId>com.ryan.ddd</groupId>
       <artifactId>ddd-layout-template-app</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.ryan.ddd</groupId>
+      <artifactId>ddd-layout-template-shared</artifactId>
+    </dependency>
     <!-- Module dependencies end -->
 
     <!-- MyBatis-Plus Starter -->
@@ -40,6 +44,13 @@
       <artifactId>mysql-connector-java</artifactId>
     </dependency>
     <!-- MyBatis-Plus Starter end -->
+
+    <!-- Serialization and Caching -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+    </dependency>
+    <!-- Serialization and Caching end -->
   </dependencies>
 
 </project>
