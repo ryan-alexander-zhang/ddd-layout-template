@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.ryan.ddd</groupId>
+    <artifactId>ddd-layout-template</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+
+  <artifactId>ddd-layout-template-app</artifactId>
+  <packaging>jar</packaging>
+
+  <properties>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <!-- Module dependencies -->
+    <dependency>
+      <groupId>com.ryan.ddd</groupId>
+      <artifactId>ddd-layout-template-domain</artifactId>
+    </dependency>
+    <!-- Module dependencies end -->
+
+    <!-- Transaction dependencies -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-tx</artifactId>
+    </dependency>
+    <!-- Transaction dependencies end -->
+  </dependencies>
+
+</project>
