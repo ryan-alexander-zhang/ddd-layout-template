@@ -24,11 +24,14 @@
       <groupId>com.ryan.ddd</groupId>
       <artifactId>ddd-layout-template-domain</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.ryan.ddd</groupId>
-      <artifactId>ddd-layout-template-shared</artifactId>
-    </dependency>
     <!-- Module dependencies end -->
+
+    <!-- Spring Context dependencies -->
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-context</artifactId>
+    </dependency>
+    <!-- Spring Context dependencies end -->
 
     <!-- Transaction dependencies -->
     <dependency>

@@ -1,6 +1,6 @@
 package com.ryan.ddd.infra.common.outbox;
 
-import com.ryan.ddd.shared.outbox.OutboxStatus;
+import com.ryan.ddd.domain.common.outbox.OutboxStatus;
 import java.time.Duration;
 import java.time.Instant;
 import java.util.List;

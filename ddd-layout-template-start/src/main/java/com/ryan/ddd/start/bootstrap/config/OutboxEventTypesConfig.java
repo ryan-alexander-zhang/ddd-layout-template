@@ -1,5 +1,6 @@
 package com.ryan.ddd.start.bootstrap.config;
 
+import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import com.ryan.ddd.infra.common.outbox.OutboxEventTypeRegistry;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,6 +17,6 @@ public class OutboxEventTypesConfig {
 
   @PostConstruct
   public void register() {
-//    registry.register(OrderCreatedEvent.TYPE, OrderCreatedEvent.class);
+    registry.register(DemoCreatedEvent.TYPE, DemoCreatedEvent.class);
   }
 }

@@ -2,9 +2,10 @@ package com.ryan.ddd.app.demo.command.dto;
 
 import java.util.UUID;
 import lombok.Builder;
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
+@Data
 @Builder
 public class CreateDemoResult {
 

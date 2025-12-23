@@ -1,4 +1,4 @@
-package com.ryan.ddd.shared.outbox;
+package com.ryan.ddd.domain.common.outbox;
 
 public class OutboxStatus {
   public static final String PENDING = "PENDING";

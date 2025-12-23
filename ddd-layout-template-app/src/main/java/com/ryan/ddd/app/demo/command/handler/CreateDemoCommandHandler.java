@@ -3,16 +3,18 @@ package com.ryan.ddd.app.demo.command.handler;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
 import com.ryan.ddd.base.CommandHandler;
+import com.ryan.ddd.domain.common.event.EventEnvelope;
+import com.ryan.ddd.domain.common.outbox.OutboxRepository;
 import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import com.ryan.ddd.domain.demo.model.Demo;
 import com.ryan.ddd.domain.demo.model.DemoName;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;
-import com.ryan.ddd.shared.event.EventEnvelope;
-import com.ryan.ddd.shared.outbox.OutboxRepository;
 import java.time.Instant;
 import java.util.UUID;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+@Component
 public class CreateDemoCommandHandler implements
     CommandHandler<CreateDemoCommand, CreateDemoResult> {
 
@@ -35,7 +37,7 @@ public class CreateDemoCommandHandler implements
     DemoCreatedEvent event = new DemoCreatedEvent(demo.getId().getValue());
     outboxRepository.append(new EventEnvelope<>(
         UUID.randomUUID(),
-        DemoCreatedEvent.TYPE,
+        event.type(),
         event,
         Instant.now()
     ));

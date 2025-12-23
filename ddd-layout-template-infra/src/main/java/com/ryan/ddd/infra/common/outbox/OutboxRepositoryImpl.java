@@ -2,9 +2,9 @@ package com.ryan.ddd.infra.common.outbox;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ryan.ddd.shared.event.EventEnvelope;
-import com.ryan.ddd.shared.outbox.OutboxRepository;
-import com.ryan.ddd.shared.outbox.OutboxStatus;
+import com.ryan.ddd.domain.common.event.EventEnvelope;
+import com.ryan.ddd.domain.common.outbox.OutboxRepository;
+import com.ryan.ddd.domain.common.outbox.OutboxStatus;
 import java.time.Instant;
 import org.springframework.stereotype.Component;
 

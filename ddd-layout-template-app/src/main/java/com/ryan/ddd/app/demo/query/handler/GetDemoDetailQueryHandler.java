@@ -5,7 +5,9 @@ import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.app.demo.query.query.DemoQueries;
 import com.ryan.ddd.base.CommandHandler;
 import java.util.Optional;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetDemoDetailQueryHandler implements CommandHandler<GetDemoDetailQuery, Optional<GetDemoDetailView>> {
 
   private final DemoQueries demoQueries;

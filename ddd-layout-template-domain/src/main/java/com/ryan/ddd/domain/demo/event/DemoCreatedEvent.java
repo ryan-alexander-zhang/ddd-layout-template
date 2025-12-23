@@ -1,16 +1,26 @@
 package com.ryan.ddd.domain.demo.event;
 
+import com.ryan.ddd.domain.common.event.DomainEvent;
 import java.util.UUID;
-import lombok.Getter;
+import lombok.Data;
 
-@Getter
-public class DemoCreatedEvent {
+@Data
+public class DemoCreatedEvent implements DomainEvent {
 
-  public static final String TYPE = "demo.created";
+  public final static String TYPE = "demo.created";
 
-  private final UUID id;
+  private final UUID demoId;
 
   public DemoCreatedEvent(UUID demoId) {
-    this.id = demoId;
+    this.demoId = demoId;
+  }
+
+  public DemoCreatedEvent() {
+    this.demoId = UUID.randomUUID();
+  }
+
+  @Override
+  public String type() {
+    return TYPE;
   }
 }

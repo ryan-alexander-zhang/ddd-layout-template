@@ -1,0 +1,24 @@
+package com.ryan.ddd.app.demo.listener;
+
+import com.ryan.ddd.domain.common.event.EventEnvelope;
+import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DemoEventListener {
+
+  @EventListener
+  public void on(EventEnvelope<?> envelope) {
+    if (!DemoCreatedEvent.TYPE.equals(envelope.getType())) {
+      return;
+    }
+  }
+
+  @EventListener
+  public void onCreate(EventEnvelope<?> envelope) {
+    if (!DemoCreatedEvent.TYPE.equals(envelope.getType())) {
+      return;
+    }
+  }
+}

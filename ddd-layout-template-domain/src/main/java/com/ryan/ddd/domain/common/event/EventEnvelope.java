@@ -1,4 +1,4 @@
-package com.ryan.ddd.shared.event;
+package com.ryan.ddd.domain.common.event;
 
 import java.time.Instant;
 import java.util.Objects;

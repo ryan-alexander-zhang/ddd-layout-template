@@ -23,6 +23,7 @@ public class DemoQueryController {
 
   @GetMapping("/{id}/detail")
   public ResponseEntity<GetDemoDetailResponse> getDemoDetailById(@PathVariable("id") UUID id) {
-    return handler.handle(new GetDemoDetailQuery(id)).map(DemoApiAssembler::toResponse).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    return handler.handle(new GetDemoDetailQuery(id)).map(DemoApiAssembler::toResponse)
+        .map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
   }
 }

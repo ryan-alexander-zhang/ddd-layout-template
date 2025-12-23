@@ -2,7 +2,6 @@ package com.ryan.ddd.infra.common.outbox;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.ryan.ddd.shared.outbox.OutboxStatus;
 import java.time.Instant;
 import java.util.UUID;
 import lombok.Getter;
@@ -20,7 +19,7 @@ public class OutboxEventPO {
   private Instant occurredAt;
 
   /**
-   * @see OutboxStatus
+   * @see com.ryan.ddd.domain.common.outbox.OutboxStatus
    */
   private String status;
   private int attempts;
