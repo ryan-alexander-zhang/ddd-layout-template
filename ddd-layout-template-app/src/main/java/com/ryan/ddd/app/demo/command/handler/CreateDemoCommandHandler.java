@@ -1,8 +1,8 @@
 package com.ryan.ddd.app.demo.command.handler;
 
-import com.ryan.ddd.base.CommandHandler;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
+import com.ryan.ddd.base.CommandHandler;
 import com.ryan.ddd.domain.demo.model.Demo;
 import com.ryan.ddd.domain.demo.model.DemoName;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;

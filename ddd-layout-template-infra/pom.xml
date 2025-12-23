@@ -24,6 +24,10 @@
       <groupId>com.ryan.ddd</groupId>
       <artifactId>ddd-layout-template-domain</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.ryan.ddd</groupId>
+      <artifactId>ddd-layout-template-app</artifactId>
+    </dependency>
     <!-- Module dependencies end -->
 
     <!-- MyBatis-Plus Starter -->

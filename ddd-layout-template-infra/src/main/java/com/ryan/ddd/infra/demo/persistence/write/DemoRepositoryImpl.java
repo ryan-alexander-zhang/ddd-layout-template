@@ -19,7 +19,7 @@ public class DemoRepositoryImpl implements DemoRepository {
   @Override
   public void save(Demo demo) {
     DemoPO demoPO = new DemoPO();
-    demoPO.setId(UUID.fromString(demo.getId().getValue()));
+    demoPO.setId(demo.getId().getValue());
     demoPO.setName(demo.getName().getValue());
     demoPO.setCreatedAt(demo.getCreatedAt());
     demoMapper.insert(demoPO);

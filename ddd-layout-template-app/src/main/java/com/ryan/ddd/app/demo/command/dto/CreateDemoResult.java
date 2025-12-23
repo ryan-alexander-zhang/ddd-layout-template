@@ -1,5 +1,6 @@
 package com.ryan.ddd.app.demo.command.dto;
 
+import java.util.UUID;
 import lombok.Builder;
 import lombok.Getter;
 
@@ -7,6 +8,6 @@ import lombok.Getter;
 @Builder
 public class CreateDemoResult {
 
-  private final String id;
-
+  private final UUID id;
+  private final String name;
 }

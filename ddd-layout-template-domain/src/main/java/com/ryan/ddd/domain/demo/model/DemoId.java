@@ -6,13 +6,13 @@ import lombok.Getter;
 @Getter
 public final class DemoId {
 
-  private final String value;
+  private final UUID value;
 
-  private DemoId(String value) {
+  private DemoId(UUID value) {
     this.value = value;
   }
 
   public static DemoId newId() {
-    return new DemoId(UUID.randomUUID().toString());
+    return new DemoId(UUID.randomUUID());
   }
 }
