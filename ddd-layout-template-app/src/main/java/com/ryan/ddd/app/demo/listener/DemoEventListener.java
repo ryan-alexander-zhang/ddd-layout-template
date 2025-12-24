@@ -5,6 +5,7 @@ import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+// TODO for now only.
 @Component
 public class DemoEventListener {
 
