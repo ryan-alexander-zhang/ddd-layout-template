@@ -24,7 +24,7 @@ public class GlobalExceptionHandler {
    * Handle JSR 303 Exception
    *
    * @param ex MethodArgumentNotValidException
-   * @return 400 with COLA response
+   * @return 400 with response
    */
   @ExceptionHandler(MethodArgumentNotValidException.class)
   public ResponseEntity<Response> handleValidationExceptions(MethodArgumentNotValidException ex) {
@@ -66,7 +66,7 @@ public class GlobalExceptionHandler {
    * malformed JSON in the request body.
    *
    * @param ex HttpMessageNotReadableException
-   * @return 400 with COLA response
+   * @return 400 with response
    */
   @ExceptionHandler(HttpMessageNotReadableException.class)
   public ResponseEntity<Response> handleHttpMessageNotReadableException(
@@ -82,7 +82,7 @@ public class GlobalExceptionHandler {
    * found.
    *
    * @param ex NoResourceFoundException
-   * @return 404 with COLA response
+   * @return 404 with response
    */
   @ExceptionHandler(NoResourceFoundException.class)
   public ResponseEntity<Response> handleNoResourceFoundException(NoResourceFoundException ex) {
@@ -96,7 +96,7 @@ public class GlobalExceptionHandler {
    * Handle all other exceptions
    *
    * @param ex Exception
-   * @return 500 with COLA response
+   * @return 500 with response
    */
   @ExceptionHandler(Throwable.class)
   public ResponseEntity<Response> handleAllExceptions(Exception ex) {

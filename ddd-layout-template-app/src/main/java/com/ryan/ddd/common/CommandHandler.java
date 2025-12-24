@@ -1,4 +1,4 @@
-package com.ryan.ddd.base;
+package com.ryan.ddd.common;
 
 public interface CommandHandler<C, R> {
 

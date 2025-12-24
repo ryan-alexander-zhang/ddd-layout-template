@@ -2,7 +2,7 @@ package com.ryan.ddd.app.demo.command.handler;
 
 import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
-import com.ryan.ddd.base.CommandHandler;
+import com.ryan.ddd.common.CommandHandler;
 import com.ryan.ddd.domain.common.event.EventEnvelope;
 import com.ryan.ddd.domain.common.outbox.OutboxRepository;
 import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;

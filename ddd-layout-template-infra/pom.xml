@@ -30,6 +30,21 @@
     </dependency>
     <!-- Module dependencies end -->
 
+    <!-- Lombok dependency -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Lombok dependency end -->
+
+    <!-- SLF4J dependency -->
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+    </dependency>
+    <!-- SLF4J dependency end -->
+
     <!-- MyBatis-Plus Starter -->
     <dependency>
       <groupId>com.baomidou</groupId>

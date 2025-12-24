@@ -3,7 +3,7 @@ package com.ryan.ddd.app.demo.query.handler;
 import com.ryan.ddd.app.demo.query.dto.GetDemoDetailQuery;
 import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.app.demo.query.query.DemoQueries;
-import com.ryan.ddd.base.CommandHandler;
+import com.ryan.ddd.common.CommandHandler;
 import java.util.Optional;
 import org.springframework.stereotype.Component;
 

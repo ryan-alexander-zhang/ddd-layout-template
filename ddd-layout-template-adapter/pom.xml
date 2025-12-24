@@ -25,6 +25,14 @@
     </dependency>
     <!-- Module dependencies end -->
 
+    <!-- Lombok dependency -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Lombok dependency end -->
+
     <!-- Spring Boot dependencies -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
