@@ -2,6 +2,7 @@ package com.ryan.ddd.start.bootstrap.config;
 
 import com.ryan.ddd.app.demo.command.handler.CreateDemoCommandHandler;
 import com.ryan.ddd.app.demo.event.DemoCreatedEventHandler;
+import com.ryan.ddd.app.demo.event.DemoCreatedEventHandler2;
 import com.ryan.ddd.app.demo.query.handler.GetDemoDetailQueryHandler;
 import com.ryan.ddd.app.demo.query.query.DemoQueries;
 import com.ryan.ddd.domain.common.outbox.OutboxRepository;
@@ -15,6 +16,11 @@ public class DemoWiringConfig {
   @Bean
   public DemoCreatedEventHandler demoCreatedEventHandler() {
     return new DemoCreatedEventHandler();
+  }
+
+  @Bean
+  public DemoCreatedEventHandler2 demoCreatedEventHandler2() {
+    return new DemoCreatedEventHandler2();
   }
 
   @Bean

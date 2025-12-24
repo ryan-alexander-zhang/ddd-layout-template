@@ -1,26 +1,31 @@
 package com.ryan.ddd.common.event;
 
 import com.ryan.ddd.domain.common.event.DomainEvent;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 public class HandlerRegistry {
 
-  private final Map<String, EventHandler<? extends DomainEvent>> byType;
+  private final Map<String, List<EventHandler<? extends DomainEvent>>> byType;
 
   public HandlerRegistry(List<EventHandler<? extends DomainEvent>> handlers) {
-    this.byType = handlers.stream().collect(Collectors.toMap(
-        EventHandler::type,
-        Function.identity(),
-        (a, b) -> {
-          throw new IllegalStateException("Duplicate handler type: " + a.type());
-        }
-    ));
+    Map<String, List<EventHandler<? extends DomainEvent>>> m = new HashMap<>();
+    for (EventHandler<? extends DomainEvent> h : handlers) {
+      m.computeIfAbsent(h.type(), k -> new ArrayList<>()).add(h);
+    }
+
+    for (List<EventHandler<? extends DomainEvent>> list : m.values()) {
+      list.sort(Comparator.comparing(EventHandler::consumerId));
+    }
+
+    this.byType = Collections.unmodifiableMap(m);
   }
 
-  public EventHandler<?> get(String type) {
-    return byType.get(type);
+  public List<EventHandler<? extends DomainEvent>> list(String type) {
+    return byType.getOrDefault(type, List.of());
   }
 }

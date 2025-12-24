@@ -8,6 +8,7 @@ import com.ryan.ddd.domain.common.event.EventEnvelope;
 import com.ryan.ddd.domain.common.inbox.InboxRepository;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.util.List;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,22 +16,31 @@ import org.springframework.transaction.annotation.Transactional;
 public class InboxEventDispatcher {
 
   private final InboxGuard inboxGuard;
-  private final HandlerRegistry registry;
+  private final HandlerRegistry handlerRegistry;
 
-  public InboxEventDispatcher(InboxGuard inboxGuard, HandlerRegistry registry) {
+  public InboxEventDispatcher(InboxGuard inboxGuard, HandlerRegistry handlerRegistry) {
     this.inboxGuard = inboxGuard;
-    this.registry = registry;
+    this.handlerRegistry = handlerRegistry;
   }
 
   @Transactional
   public void dispatch(EventEnvelope<?> envelope) {
-    EventHandler<?> handler = registry.get(envelope.getType());
-    if (handler == null) {
+    List<EventHandler<? extends DomainEvent>> handlers = handlerRegistry.list(envelope.getType());
+    if (handlers.isEmpty()) {
       return;
     }
 
+    for (EventHandler<? extends DomainEvent> h : handlers) {
+      dispatchToOne(h, envelope);
+    }
+  }
+
+  private void dispatchToOne(EventHandler<? extends DomainEvent> h, EventEnvelope<?> envelope) {
     String messageId = envelope.getId().toString();
-    String consumer = consumerKey(handler, envelope.getType());
+
+    // 关键：同一条消息，不同处理器必须不同 consumer，避免互相抢幂等
+    String consumer = consumerKey(h, envelope.getType());
+
     String payloadHash = sha256Hex(String.valueOf(envelope.getPayload()));
 
     InboxRepository.TryStartResult r = inboxGuard.tryStart(messageId, consumer, payloadHash);
@@ -39,7 +49,7 @@ public class InboxEventDispatcher {
     }
 
     try {
-      invoke(handler, envelope.getPayload());
+      invokeTyped(h, envelope.getPayload());
       inboxGuard.markDone(messageId, consumer);
     } catch (Exception ex) {
       inboxGuard.markFailed(messageId, consumer, safeErr(ex));
@@ -48,7 +58,12 @@ public class InboxEventDispatcher {
   }
 
   private static String consumerKey(EventHandler<?> h, String type) {
-    return h.consumerId() + ":" + type;
+    return "spring-event:" + h.consumerId() + ":" + type;
+  }
+
+  private static <T extends DomainEvent> void invokeTyped(EventHandler<T> h, Object payload) {
+    T typed = h.payloadClass().cast(payload);
+    h.handler(typed);
   }
 
   private static String sha256Hex(String s) {
@@ -56,25 +71,16 @@ public class InboxEventDispatcher {
       MessageDigest md = MessageDigest.getInstance("SHA-256");
       byte[] digest = md.digest(s.getBytes(StandardCharsets.UTF_8));
       StringBuilder sb = new StringBuilder(digest.length * 2);
-      for (byte b : digest) {
-        sb.append(String.format("%02x", b));
-      }
+      for (byte b : digest) sb.append(String.format("%02x", b));
       return sb.toString();
     } catch (Exception e) {
       return null;
     }
   }
 
-  private static <T extends DomainEvent> void invoke(EventHandler<T> handler, Object payload) {
-    T typedPayload = handler.payloadClass().cast(payload);
-    handler.handler(typedPayload);
-  }
-
   private static String safeErr(Exception ex) {
     String m = ex.getMessage();
-    if (m == null) {
-      return ex.getClass().getSimpleName();
-    }
+    if (m == null) return ex.getClass().getSimpleName();
     return m.length() > 1000 ? m.substring(0, 1000) : m;
   }
 }

@@ -5,11 +5,11 @@ import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DemoCreatedEventHandler implements EventHandler<DemoCreatedEvent> {
+public class DemoCreatedEventHandler2 implements EventHandler<DemoCreatedEvent> {
 
   @Override
   public void handler(DemoCreatedEvent event) {
-    log.info("DemoCreatedEventHandler event handled. id: {}", event.getDemoId().toString());
+    log.info("DemoCreatedEventHandler2 event handled. id: {}", event.getDemoId().toString());
   }
 
   @Override
