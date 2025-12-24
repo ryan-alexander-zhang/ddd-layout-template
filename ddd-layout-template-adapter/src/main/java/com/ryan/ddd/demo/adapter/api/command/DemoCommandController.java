@@ -2,6 +2,7 @@ package com.ryan.ddd.demo.adapter.api.command;
 
 import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
 import com.ryan.ddd.app.demo.command.handler.CreateDemoCommandHandler;
+import com.ryan.ddd.common.SingleResponse;
 import com.ryan.ddd.demo.adapter.api.command.request.CreateDemoRequest;
 import com.ryan.ddd.demo.adapter.api.command.response.CreateDemoResponse;
 import com.ryan.ddd.demo.adapter.assembler.DemoApiAssembler;
@@ -23,11 +24,11 @@ public class DemoCommandController {
   }
 
   @PostMapping
-  public ResponseEntity<CreateDemoResponse> create(
+  public ResponseEntity<SingleResponse<CreateDemoResponse>> create(
       @Validated @RequestBody CreateDemoRequest request) {
     // Implementation goes here
     CreateDemoResult createDemoResult = createDemoCommandHandler.handle(
         DemoApiAssembler.toCommand(request));
-    return ResponseEntity.ok(DemoApiAssembler.toResponse(createDemoResult));
+    return ResponseEntity.ok(SingleResponse.of(DemoApiAssembler.toResponse(createDemoResult)));
   }
 }

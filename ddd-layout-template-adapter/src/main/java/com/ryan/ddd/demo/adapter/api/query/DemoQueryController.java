@@ -2,6 +2,7 @@ package com.ryan.ddd.demo.adapter.api.query;
 
 import com.ryan.ddd.app.demo.query.dto.GetDemoDetailQuery;
 import com.ryan.ddd.app.demo.query.handler.GetDemoDetailQueryHandler;
+import com.ryan.ddd.common.SingleResponse;
 import com.ryan.ddd.demo.adapter.api.query.response.GetDemoDetailResponse;
 import com.ryan.ddd.demo.adapter.assembler.DemoApiAssembler;
 import java.util.UUID;
@@ -22,8 +23,11 @@ public class DemoQueryController {
   }
 
   @GetMapping("/{id}/detail")
-  public ResponseEntity<GetDemoDetailResponse> getDemoDetailById(@PathVariable("id") UUID id) {
-    return handler.handle(new GetDemoDetailQuery(id)).map(DemoApiAssembler::toResponse)
-        .map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+  public ResponseEntity<SingleResponse<GetDemoDetailResponse>> getDemoDetailById(@PathVariable("id") UUID id) {
+    return handler.handle(new GetDemoDetailQuery(id))
+        .map(DemoApiAssembler::toResponse)
+        .map(SingleResponse::of)
+        .map(ResponseEntity::ok)
+        .orElse(ResponseEntity.notFound().build());
   }
 }

@@ -1,4 +1,4 @@
 /**
- * REST response. Should use the record.
+ * <p>REST response.</p>
  */
 package com.ryan.ddd.demo.adapter.api.command.response;
