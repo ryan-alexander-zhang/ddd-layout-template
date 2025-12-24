@@ -1,0 +1,24 @@
+package com.ryan.ddd.app.demo.event;
+
+import com.ryan.ddd.common.event.EventHandler;
+import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+public class DemoCreatedEventHandler implements EventHandler<DemoCreatedEvent> {
+
+  @Override
+  public void handler(DemoCreatedEvent event) {
+    log.info("demo created event handled. id: {}", event.getDemoId().toString());
+  }
+
+  @Override
+  public String type() {
+    return DemoCreatedEvent.TYPE;
+  }
+
+  @Override
+  public Class<DemoCreatedEvent> payloadClass() {
+    return DemoCreatedEvent.class;
+  }
+}

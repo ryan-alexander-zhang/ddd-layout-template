@@ -2,9 +2,8 @@ package com.ryan.ddd.start.bootstrap.config;
 
 import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import com.ryan.ddd.infra.common.outbox.OutboxEventTypeRegistry;
-import org.springframework.context.annotation.Configuration;
-
 import jakarta.annotation.PostConstruct;
+import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OutboxEventTypesConfig {

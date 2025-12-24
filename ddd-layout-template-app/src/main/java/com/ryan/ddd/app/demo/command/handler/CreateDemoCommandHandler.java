@@ -11,10 +11,8 @@ import com.ryan.ddd.domain.demo.model.DemoName;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;
 import java.time.Instant;
 import java.util.UUID;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-@Component
 public class CreateDemoCommandHandler implements
     CommandHandler<CreateDemoCommand, CreateDemoResult> {
 

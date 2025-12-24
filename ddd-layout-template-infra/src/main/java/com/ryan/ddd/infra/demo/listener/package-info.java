@@ -14,5 +14,5 @@
  *   <li>Handle idempotency and error handling explicitly.</li>
  * </ul>
  */
-package com.ryan.ddd.app.demo.listener;
+package com.ryan.ddd.infra.demo.listener;
 
