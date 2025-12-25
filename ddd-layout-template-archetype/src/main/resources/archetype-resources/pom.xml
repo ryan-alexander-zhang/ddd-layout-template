@@ -1,21 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.ryan.ddd</groupId>
-  <artifactId>ddd-layout-template</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <groupId>${groupId}</groupId>
+  <artifactId>${artifactId}</artifactId>
+  <version>${version}</version>
   <packaging>pom</packaging>
-  <modules>
-    <module>ddd-layout-template-archetype</module>
-    <module>ddd-layout-template-start</module>
-    <module>ddd-layout-template-infra</module>
-    <module>ddd-layout-template-app</module>
-    <module>ddd-layout-template-domain</module>
-    <module>ddd-layout-template-adapter</module>
-  </modules>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
@@ -27,8 +17,7 @@
     <mybatis-plus-spring-boot3-starter.version>3.5.7</mybatis-plus-spring-boot3-starter.version>
     <mysql-connect-java.version>8.0.26</mysql-connect-java.version>
     <redisson-spring-boot-starter.version>3.37.0</redisson-spring-boot-starter.version>
-    <knife4j-openapi3-jakarta-spring-boot-starter.version>4.4.0
-    </knife4j-openapi3-jakarta-spring-boot-starter.version>
+    <knife4j-openapi3-jakarta-spring-boot-starter.version>4.4.0</knife4j-openapi3-jakarta-spring-boot-starter.version>
     <opentelemetry-instrumentation-bom.version>2.21.0</opentelemetry-instrumentation-bom.version>
     <lombok.version>1.18.30</lombok.version>
   </properties>
@@ -37,29 +26,29 @@
     <dependencies>
       <!-- Internal modules for version alignment -->
       <dependency>
-        <groupId>com.ryan.ddd</groupId>
-        <artifactId>ddd-layout-template-start</artifactId>
-        <version>${project.version}</version>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}-start</artifactId>
+        <version>${version}</version>
       </dependency>
       <dependency>
-        <groupId>com.ryan.ddd</groupId>
-        <artifactId>ddd-layout-template-infra</artifactId>
-        <version>${project.version}</version>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}-infra</artifactId>
+        <version>${version}</version>
       </dependency>
       <dependency>
-        <groupId>com.ryan.ddd</groupId>
-        <artifactId>ddd-layout-template-domain</artifactId>
-        <version>${project.version}</version>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}-domain</artifactId>
+        <version>${version}</version>
       </dependency>
       <dependency>
-        <groupId>com.ryan.ddd</groupId>
-        <artifactId>ddd-layout-template-adapter</artifactId>
-        <version>${project.version}</version>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}-adapter</artifactId>
+        <version>${version}</version>
       </dependency>
       <dependency>
-        <groupId>com.ryan.ddd</groupId>
-        <artifactId>ddd-layout-template-app</artifactId>
-        <version>${project.version}</version>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}-app</artifactId>
+        <version>${version}</version>
       </dependency>
       <!-- Internal modules for version alignment end-->
 

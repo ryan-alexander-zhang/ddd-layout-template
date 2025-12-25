@@ -1,0 +1,8 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+/**
+ * <p>This package contains the read model representations for query operations in the demo application.
+ * Read models are optimized for querying and are typically used in CQRS (Command Query Responsibility Segregation) architectures.</p>
+ */
+package ${package}.app.demo.query.readmodel;

@@ -1,0 +1,27 @@
+server:
+  port: 8189
+
+spring:
+  application:
+    name: ddd-layout-template
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3406/ddd_layout_template?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+    username: root
+    password: root
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  type-handlers-package: com.ryan.ddd.infra.common.persistence
+
+outbox:
+  publisher:
+    fixedDelayMs: 2000
+
