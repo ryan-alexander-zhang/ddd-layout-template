@@ -7,7 +7,7 @@ import lombok.Data;
 @Data
 public class DemoCreatedEvent implements DomainEvent {
 
-  public final static String TYPE = "demo.created";
+  public static final String EVENT_TYPE = "demo.created";
 
   private final UUID demoId;
 
@@ -17,10 +17,5 @@ public class DemoCreatedEvent implements DomainEvent {
 
   public DemoCreatedEvent() {
     this.demoId = UUID.randomUUID();
-  }
-
-  @Override
-  public String type() {
-    return TYPE;
   }
 }

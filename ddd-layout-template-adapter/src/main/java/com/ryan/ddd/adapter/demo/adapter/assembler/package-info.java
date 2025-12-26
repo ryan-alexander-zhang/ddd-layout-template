@@ -1,0 +1,1 @@
+package com.ryan.ddd.adapter.demo.adapter.assembler;

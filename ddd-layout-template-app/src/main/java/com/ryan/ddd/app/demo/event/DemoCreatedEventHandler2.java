@@ -1,11 +1,11 @@
 package com.ryan.ddd.app.demo.event;
 
-import com.ryan.ddd.common.event.EventHandler;
+import com.ryan.ddd.app.common.event.EventHandle;
 import com.ryan.ddd.domain.demo.event.DemoCreatedEvent;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class DemoCreatedEventHandler2 implements EventHandler<DemoCreatedEvent> {
+public class DemoCreatedEventHandler2 implements EventHandle<DemoCreatedEvent> {
 
   @Override
   public void handler(DemoCreatedEvent event) {
@@ -13,8 +13,8 @@ public class DemoCreatedEventHandler2 implements EventHandler<DemoCreatedEvent> 
   }
 
   @Override
-  public String type() {
-    return DemoCreatedEvent.TYPE;
+  public String getType() {
+    return DemoCreatedEvent.EVENT_TYPE;
   }
 
   @Override
@@ -22,3 +22,4 @@ public class DemoCreatedEventHandler2 implements EventHandler<DemoCreatedEvent> 
     return DemoCreatedEvent.class;
   }
 }
+

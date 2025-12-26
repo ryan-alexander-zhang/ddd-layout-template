@@ -4,7 +4,6 @@ import com.ryan.ddd.domain.common.event.EventEnvelope;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Component;
 
-// TODO for now
 @Component
 public class SpringOutboxEventPublisher implements OutboxEventPublisher {
 

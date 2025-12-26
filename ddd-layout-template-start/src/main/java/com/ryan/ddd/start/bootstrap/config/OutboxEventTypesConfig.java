@@ -16,6 +16,6 @@ public class OutboxEventTypesConfig {
 
   @PostConstruct
   public void register() {
-    registry.register(DemoCreatedEvent.TYPE, DemoCreatedEvent.class);
+    registry.register(DemoCreatedEvent.EVENT_TYPE, DemoCreatedEvent.class);
   }
 }

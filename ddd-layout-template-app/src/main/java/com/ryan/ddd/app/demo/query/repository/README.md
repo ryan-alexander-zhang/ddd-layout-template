@@ -1,0 +1,1 @@
+# Used for the read model repository

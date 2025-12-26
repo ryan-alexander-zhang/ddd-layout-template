@@ -49,13 +49,6 @@
     </dependency>
     <!-- SLF4J dependency end -->
 
-<!--    &lt;!&ndash; Spring Context dependencies &ndash;&gt;-->
-<!--    <dependency>-->
-<!--      <groupId>org.springframework</groupId>-->
-<!--      <artifactId>spring-context</artifactId>-->
-<!--    </dependency>-->
-<!--    &lt;!&ndash; Spring Context dependencies end &ndash;&gt;-->
-
     <!-- Transaction dependencies -->
     <dependency>
       <groupId>org.springframework</groupId>

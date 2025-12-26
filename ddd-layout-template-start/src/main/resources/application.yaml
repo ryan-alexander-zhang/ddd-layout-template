@@ -1,27 +1,31 @@
 server:
   port: 8189
-
 spring:
+  profiles:
+    active: local
   application:
     name: ddd-layout-template
+logging:
+  config: classpath:logback/logback-${spring.profiles.active}.xml
+  level:
+    root: info
+# springdoc-openapi config
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  group-configs:
+    - group: 'ddd-layout-template'
+      paths-to-match: '/api/**'
+      packages-to-scan: com.ryan.ddd.adapter
+# knife4j config
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
 
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3406/ddd_layout_template?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
-    username: root
-    password: root
-
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath:schema.sql
-
-mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-  type-handlers-package: com.ryan.ddd.infra.common.persistence
-
-outbox:
-  publisher:
-    fixedDelayMs: 2000
-
+# OpenTelemetry config
+management:
+  tracing:
+    enabled: true
+    sampling:
+      probability: 1.0
