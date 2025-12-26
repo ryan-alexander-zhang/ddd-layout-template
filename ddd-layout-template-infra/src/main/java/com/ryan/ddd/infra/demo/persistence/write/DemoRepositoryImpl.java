@@ -2,8 +2,11 @@ package com.ryan.ddd.infra.demo.persistence.write;
 
 import com.ryan.ddd.domain.demo.model.Demo;
 import com.ryan.ddd.domain.demo.repository.DemoRepository;
+import com.ryan.ddd.infra.common.exception.MyBatisPlusDbExceptionClassifier;
 import com.ryan.ddd.infra.demo.persistence.write.mapper.DemoMapper;
 import com.ryan.ddd.infra.demo.persistence.write.po.DemoPO;
+import org.apache.ibatis.exceptions.PersistenceException;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -21,6 +24,10 @@ public class DemoRepositoryImpl implements DemoRepository {
     demoPO.setId(demo.getId().getValue());
     demoPO.setName(demo.getName().getValue());
     demoPO.setCreatedAt(demo.getCreatedAt());
-    demoMapper.insert(demoPO);
+    try {
+      demoMapper.insert(demoPO);
+    } catch (DataAccessException | PersistenceException e) {
+      throw MyBatisPlusDbExceptionClassifier.classify("demo.insert", e);
+    }
   }
 }
