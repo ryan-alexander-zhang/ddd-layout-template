@@ -1,7 +1,8 @@
 package com.ryan.ddd.adapter.demo.adapter.api.command;
 
+import com.ryan.ddd.app.common.CommandHandler;
+import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
 import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
-import com.ryan.ddd.app.demo.command.handler.CreateDemoCommandHandler;
 import com.ryan.ddd.adapter.common.SingleResponse;
 import com.ryan.ddd.adapter.demo.adapter.api.command.request.CreateDemoRequest;
 import com.ryan.ddd.adapter.demo.adapter.api.command.response.CreateDemoResponse;
@@ -17,16 +18,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/demo")
 public class DemoCommandController {
 
-  private final CreateDemoCommandHandler createDemoCommandHandler;
+  private final CommandHandler<CreateDemoCommand, CreateDemoResult> createDemoCommandHandler;
 
-  public DemoCommandController(CreateDemoCommandHandler createDemoCommandHandler) {
+  public DemoCommandController(
+      CommandHandler<CreateDemoCommand, CreateDemoResult> createDemoCommandHandler) {
     this.createDemoCommandHandler = createDemoCommandHandler;
   }
 
   @PostMapping
   public ResponseEntity<SingleResponse<CreateDemoResponse>> create(
       @Validated @RequestBody CreateDemoRequest request) {
-    // Implementation goes here
     CreateDemoResult createDemoResult = createDemoCommandHandler.handle(
         DemoApiAssembler.toCommand(request));
     return ResponseEntity.ok(SingleResponse.of(DemoApiAssembler.toResponse(createDemoResult)));

@@ -1,5 +1,6 @@
 package com.ryan.ddd.adapter.common;
 
+import com.ryan.ddd.app.common.exception.AppException;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.extern.slf4j.Slf4j;
@@ -38,6 +39,26 @@ public class GlobalExceptionHandler {
         HttpStatus.BAD_REQUEST);
   }
 
+  /**
+   * Handle application exceptions (translated from domain/infra inside app layer).
+   */
+  @ExceptionHandler(AppException.class)
+  public ResponseEntity<Response> handleAppException(AppException ex) {
+    int statusCode = ex.getErrorCode().httpStatus();
+    HttpStatus status = HttpStatus.resolve(statusCode);
+    if (status == null) {
+      status = HttpStatus.INTERNAL_SERVER_ERROR;
+    }
+
+    // Message is assumed to be client-safe at this boundary.
+    log.warn("AppException: code={}, status={}, message={}", ex.getErrorCode().code(), statusCode,
+        ex.getMessage(), ex);
+
+    return new ResponseEntity<>(
+        Response.buildFailure(ex.getErrorCode().code(), ex.getMessage()),
+        status);
+  }
+
   @ExceptionHandler(IllegalArgumentException.class)
   public ResponseEntity<Response> handleIllegalArgumentException(IllegalArgumentException ex) {
     log.warn("IllegalArgumentException caught: ", ex);
@@ -45,7 +66,6 @@ public class GlobalExceptionHandler {
         Response.buildFailure(HttpStatus.BAD_REQUEST.getReasonPhrase(), ex.getMessage()),
         HttpStatus.BAD_REQUEST);
   }
-
 
   @ExceptionHandler(MethodArgumentTypeMismatchException.class)
   public ResponseEntity<Response> handleMethodArgumentTypeMismatchException(
@@ -94,11 +114,11 @@ public class GlobalExceptionHandler {
   /**
    * Handle all other exceptions
    *
-   * @param ex Exception
+   * @param ex Throwable
    * @return 500 with response
    */
   @ExceptionHandler(Throwable.class)
-  public ResponseEntity<Response> handleAllExceptions(Exception ex) {
+  public ResponseEntity<Response> handleAllExceptions(Throwable ex) {
     log.error("An unexpected error occurred: ", ex);
     return new ResponseEntity<>(
         Response.buildFailure(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),

@@ -1,5 +1,6 @@
 package com.ryan.ddd.domain.demo.model;
 
+import com.ryan.ddd.domain.common.exception.DomainException;
 import java.util.Objects;
 import lombok.Getter;
 
@@ -15,7 +16,7 @@ public final class DemoName {
   public static DemoName of(String value) {
     String v = Objects.requireNonNull(value, "name").trim();
     if (v.isEmpty()) {
-      throw new IllegalArgumentException("name must not be blank");
+      throw new DomainException("name must not be blank");
     }
     return new DemoName(v);
   }

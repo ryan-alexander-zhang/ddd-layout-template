@@ -1,21 +1,15 @@
 package com.ryan.ddd.app.common.error;
 
 public enum CommonErrorCodes implements ErrorCode {
-  // What is the best code pattern?
-  VALIDATION_ERROR("01", 400, false, "Invalid request."),
-  UNAUTHORIZED("01", 401, false, "Unauthorized."),
-  FORBIDDEN("03", 403, false, "Forbidden."),
-  NOT_FOUND("04", 404, false, "Resource not found."),
-  CONFLICT("05", 409, false, "Conflict."),
+  // Common (transport-agnostic) errors
+  VALIDATION_ERROR("DDD-COM-VAL-0001", 400, false, "Invalid request."),
+  UNAUTHORIZED("DDD-COM-AUTH-0001", 401, false, "Unauthorized."),
+  FORBIDDEN("DDD-COM-AUTH-0002", 403, false, "Forbidden."),
+  NOT_FOUND("DDD-COM-RES-0001", 404, false, "Resource not found."),
+  CONFLICT("DDD-COM-BIZ-0001", 409, false, "Conflict."),
   SYSTEM_ERROR("DDD-COM-SYS-0001", 500, false, "Internal error."),
 
-  // Database Error Code
-  DB_DEADLOCK("DDD-COM-DB-0001", 503, true, "Database busy. Please retry."),
-  DB_LOCK_TIMEOUT("DDD-COM-DB-0002", 503, true, "Database timeout. Please retry."),
-  DB_CONSTRAINT("DDD-COM-DB-0003", 400, false, "Constraint violated."),
-  DB_ERROR("DDD-COM-DB-0004", 500, false, "Database error."),
-
-  // Downstream Error Code
+  // Dependency / downstream (generic)
   DEPENDENCY_FAILURE("DDD-COM-EXT-0001", 503, true, "Dependency failure. Please retry."),
   ;
 
