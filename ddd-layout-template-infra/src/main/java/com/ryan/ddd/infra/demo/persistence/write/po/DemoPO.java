@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 @TableName("demo")
 public class DemoPO {
+
   @TableId
   private UUID id;
   private String name;

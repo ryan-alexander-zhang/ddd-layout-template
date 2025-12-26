@@ -11,7 +11,8 @@ public class OutboxSerializationException extends InfraException {
         Map.of("component", "outbox"));
   }
 
-  public OutboxSerializationException(String message, Throwable cause, Map<String, Serializable> attributes) {
+  public OutboxSerializationException(String message, Throwable cause,
+      Map<String, Serializable> attributes) {
     super(FailureCategory.SERDE, FailureReason.SERDE, false, message, cause, attributes);
   }
 }

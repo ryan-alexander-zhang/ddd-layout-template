@@ -4,16 +4,19 @@ import com.ryan.ddd.app.common.error.CommonErrorCodes;
 import com.ryan.ddd.app.common.error.ErrorCode;
 import com.ryan.ddd.app.common.error.InfraErrorCodes;
 import com.ryan.ddd.domain.common.exception.DomainException;
-
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class ExceptionTranslator {
-  private ExceptionTranslator() {}
+
+  private ExceptionTranslator() {
+  }
 
   public static AppException translate(Throwable t) {
-    if (t instanceof AppException ae) return ae;
+    if (t instanceof AppException ae) {
+      return ae;
+    }
 
     if (t instanceof DomainException de) {
       return new AppException(CommonErrorCodes.CONFLICT, safeMessage(de), de,
@@ -29,7 +32,8 @@ public final class ExceptionTranslator {
       return new AppException(code, code.message(), ie, attrs);
     }
 
-    return new AppException(CommonErrorCodes.SYSTEM_ERROR, CommonErrorCodes.SYSTEM_ERROR.message(), t,
+    return new AppException(CommonErrorCodes.SYSTEM_ERROR, CommonErrorCodes.SYSTEM_ERROR.message(),
+        t,
         Map.of("exception", t.getClass().getName()));
   }
 

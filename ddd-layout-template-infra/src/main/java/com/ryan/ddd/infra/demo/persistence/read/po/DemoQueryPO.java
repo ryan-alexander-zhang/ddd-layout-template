@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 @TableName("demo")
 public class DemoQueryPO {
+
   @TableId
   private UUID id;
   private String name;

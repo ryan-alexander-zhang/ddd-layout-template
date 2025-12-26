@@ -1,13 +1,14 @@
 package com.ryan.ddd.adapter.demo.adapter.assembler;
 
-import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
-import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
-import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.adapter.demo.adapter.api.command.request.CreateDemoRequest;
 import com.ryan.ddd.adapter.demo.adapter.api.command.response.CreateDemoResponse;
 import com.ryan.ddd.adapter.demo.adapter.api.query.response.GetDemoDetailResponse;
+import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
+import com.ryan.ddd.app.demo.command.dto.CreateDemoResult;
+import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 
 public class DemoApiAssembler {
+
   private DemoApiAssembler() {
   }
 

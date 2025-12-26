@@ -5,6 +5,7 @@ import lombok.Getter;
 
 @Getter
 public final class GetDemoDetailQuery {
+
   private final UUID id;
 
   public GetDemoDetailQuery(UUID id) {

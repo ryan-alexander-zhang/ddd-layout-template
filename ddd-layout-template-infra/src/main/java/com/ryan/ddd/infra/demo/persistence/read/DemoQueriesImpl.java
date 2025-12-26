@@ -1,7 +1,7 @@
 package com.ryan.ddd.infra.demo.persistence.read;
 
-import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.app.demo.query.query.DemoQueries;
+import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.infra.demo.persistence.read.mapper.DemoQueryMapper;
 import com.ryan.ddd.infra.demo.persistence.read.po.DemoQueryPO;
 import java.util.Optional;

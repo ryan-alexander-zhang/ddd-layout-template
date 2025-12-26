@@ -4,9 +4,11 @@ import com.ryan.ddd.app.common.exception.AppException;
 import com.ryan.ddd.app.common.exception.ExceptionTranslator;
 
 /**
- * A {@link CommandHandler} decorator that translates domain/infra exceptions into {@link AppException}.
+ * A {@link CommandHandler} decorator that translates domain/infra exceptions into
+ * {@link AppException}.
  *
- * <p>Use this at the application boundary so the adapter only needs to handle {@link AppException}.
+ * <p>Use this at the application boundary so the adapter only needs to handle
+ * {@link AppException}.
  */
 public final class TranslatingCommandHandler<C, R> implements CommandHandler<C, R> {
 

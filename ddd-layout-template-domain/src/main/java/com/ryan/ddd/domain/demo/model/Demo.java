@@ -8,9 +8,9 @@ import lombok.Getter;
 public final class Demo {
 
   private final DemoId id;
+  private final Instant createdAt;
   private DemoName name;
   private DemoStatus status;
-  private final Instant createdAt;
 
   private Demo(DemoId id, DemoName name, DemoStatus status) {
     this.id = id;

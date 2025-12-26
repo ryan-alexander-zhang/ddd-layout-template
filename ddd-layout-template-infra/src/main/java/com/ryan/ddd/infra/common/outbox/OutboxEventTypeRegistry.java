@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class OutboxEventTypeRegistry {
+
   private final Map<String, Class<?>> types = new ConcurrentHashMap<>();
 
   public void register(String type, Class<?> clazz) {
@@ -14,7 +15,9 @@ public class OutboxEventTypeRegistry {
 
   public Class<?> required(String type) {
     Class<?> c = types.get(type);
-    if (c == null) throw new IllegalArgumentException("Unknown outbox event type: " + type);
+    if (c == null) {
+      throw new IllegalArgumentException("Unknown outbox event type: " + type);
+    }
     return c;
   }
 }

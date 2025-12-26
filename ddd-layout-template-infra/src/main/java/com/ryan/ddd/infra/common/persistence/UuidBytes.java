@@ -5,7 +5,9 @@ import java.util.UUID;
 
 // TODO temp
 public final class UuidBytes {
-  private UuidBytes() {}
+
+  private UuidBytes() {
+  }
 
   public static byte[] toBytes(UUID uuid) {
     ByteBuffer bb = ByteBuffer.allocate(16);

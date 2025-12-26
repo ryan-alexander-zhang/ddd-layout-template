@@ -1,6 +1,6 @@
 package com.ryan.ddd.adapter.demo.app.command.dto;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.ryan.ddd.app.demo.command.dto.CreateDemoCommand;
 import org.junit.jupiter.api.Test;

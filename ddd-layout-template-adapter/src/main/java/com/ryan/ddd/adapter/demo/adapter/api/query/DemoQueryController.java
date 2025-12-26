@@ -1,11 +1,11 @@
 package com.ryan.ddd.adapter.demo.adapter.api.query;
 
-import com.ryan.ddd.app.common.CommandHandler;
-import com.ryan.ddd.app.demo.query.dto.GetDemoDetailQuery;
-import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import com.ryan.ddd.adapter.common.SingleResponse;
 import com.ryan.ddd.adapter.demo.adapter.api.query.response.GetDemoDetailResponse;
 import com.ryan.ddd.adapter.demo.adapter.assembler.DemoApiAssembler;
+import com.ryan.ddd.app.common.CommandHandler;
+import com.ryan.ddd.app.demo.query.dto.GetDemoDetailQuery;
+import com.ryan.ddd.app.demo.query.view.GetDemoDetailView;
 import java.util.Optional;
 import java.util.UUID;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,8 @@ public class DemoQueryController {
 
   private final CommandHandler<GetDemoDetailQuery, Optional<GetDemoDetailView>> handler;
 
-  public DemoQueryController(CommandHandler<GetDemoDetailQuery, Optional<GetDemoDetailView>> handler) {
+  public DemoQueryController(
+      CommandHandler<GetDemoDetailQuery, Optional<GetDemoDetailView>> handler) {
     this.handler = handler;
   }
 
