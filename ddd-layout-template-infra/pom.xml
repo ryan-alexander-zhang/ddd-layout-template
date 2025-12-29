@@ -56,6 +56,13 @@
     </dependency>
     <!-- MyBatis-Plus Starter end -->
 
+    <!-- Messaging (Kafka) -->
+    <dependency>
+      <groupId>org.springframework.kafka</groupId>
+      <artifactId>spring-kafka</artifactId>
+    </dependency>
+    <!-- Messaging (Kafka) end -->
+
     <!-- Serialization and Caching -->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>

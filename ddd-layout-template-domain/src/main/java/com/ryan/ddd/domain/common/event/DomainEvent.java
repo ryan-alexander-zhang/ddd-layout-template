@@ -1,5 +1,8 @@
 package com.ryan.ddd.domain.common.event;
 
-public interface DomainEvent {
+import java.util.UUID;
 
+public interface DomainEvent {
+  String type();
+  UUID aggregateId();
 }

@@ -1,6 +1,8 @@
 package com.ryan.ddd.infra.common.outbox;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ryan.ddd.domain.common.event.DomainEvent;
 import com.ryan.ddd.domain.common.event.EventEnvelope;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +17,17 @@ public class OutboxEventSerde {
     this.registry = registry;
   }
 
-  public EventEnvelope<?> toEnvelope(OutboxEventPO po) throws Exception {
-    Class<?> clazz = registry.required(po.getType());
-    Object payload = objectMapper.readValue(po.getPayload(), clazz);
-    return new EventEnvelope<>(po.getId(), po.getType(), payload, po.getOccurredAt());
+  public EventEnvelope<DomainEvent> toEnvelope(OutboxEventPO po)
+      throws JsonProcessingException {
+
+    Class<? extends DomainEvent> clazz = registry.required(po.getType());
+    DomainEvent payload = objectMapper.readValue(po.getPayload(), clazz);
+
+    if (!po.getType().equals(payload.type())) {
+      throw new IllegalArgumentException(
+          "Outbox type mismatch. outbox=" + po.getType() + ", payload=" + payload.type());
+    }
+
+    return new EventEnvelope<>(po.getId(), payload, po.getOccurredAt());
   }
 }

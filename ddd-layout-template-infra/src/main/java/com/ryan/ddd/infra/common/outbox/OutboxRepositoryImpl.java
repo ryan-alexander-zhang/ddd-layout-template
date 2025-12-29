@@ -22,7 +22,7 @@ public class OutboxRepositoryImpl implements OutboxRepository {
   @Override
   public void append(EventEnvelope<?> envelope) {
     OutboxEventPO po = new OutboxEventPO();
-    po.setId(envelope.getId());
+    po.setId(envelope.getEventId());
     po.setType(envelope.getType());
     po.setPayload(toJson(envelope.getPayload()));
     po.setOccurredAt(envelope.getOccurredAt());

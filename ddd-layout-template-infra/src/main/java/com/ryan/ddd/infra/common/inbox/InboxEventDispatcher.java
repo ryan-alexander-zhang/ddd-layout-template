@@ -28,7 +28,7 @@ public class InboxEventDispatcher {
   }
 
   private void dispatchToOne(EventHandle<? extends DomainEvent> h, EventEnvelope<?> envelope) {
-    String messageId = envelope.getId().toString();
+    String messageId = envelope.getEventId().toString();
 
     // 关键：同一条消息，不同处理器必须不同 consumer，避免互相抢幂等
     String consumer = consumerKey(h, envelope.getType());

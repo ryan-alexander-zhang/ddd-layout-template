@@ -1,10 +1,9 @@
 package com.ryan.ddd.infra.common.outbox;
 
+import com.ryan.ddd.domain.common.event.DomainEvent;
 import com.ryan.ddd.domain.common.event.EventEnvelope;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.stereotype.Component;
 
-@Component
 public class SpringOutboxEventPublisher implements OutboxEventPublisher {
 
   private final ApplicationEventPublisher publisher;
@@ -14,7 +13,7 @@ public class SpringOutboxEventPublisher implements OutboxEventPublisher {
   }
 
   @Override
-  public void publish(EventEnvelope<?> envelope) {
+  public void publish(EventEnvelope<? extends DomainEvent> envelope) {
     publisher.publishEvent(envelope);
   }
 }

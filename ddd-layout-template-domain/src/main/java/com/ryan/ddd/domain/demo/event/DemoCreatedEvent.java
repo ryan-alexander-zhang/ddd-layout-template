@@ -18,4 +18,15 @@ public class DemoCreatedEvent implements DomainEvent {
   public DemoCreatedEvent() {
     this.demoId = UUID.randomUUID();
   }
+
+
+  @Override
+  public String type() {
+    return EVENT_TYPE;
+  }
+
+  @Override
+  public UUID aggregateId() {
+    return demoId;
+  }
 }

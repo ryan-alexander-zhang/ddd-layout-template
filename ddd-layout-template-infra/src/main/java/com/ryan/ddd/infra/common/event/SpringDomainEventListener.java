@@ -3,9 +3,7 @@ package com.ryan.ddd.infra.common.event;
 import com.ryan.ddd.domain.common.event.EventEnvelope;
 import com.ryan.ddd.infra.common.inbox.InboxEventDispatcher;
 import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Component;
 
-@Component
 public class SpringDomainEventListener {
 
   private final InboxEventDispatcher dispatcher;

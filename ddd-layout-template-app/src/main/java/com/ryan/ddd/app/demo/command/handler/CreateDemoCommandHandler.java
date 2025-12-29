@@ -37,7 +37,6 @@ public class CreateDemoCommandHandler implements
     DemoCreatedEvent event = new DemoCreatedEvent(demo.getId().getValue());
     outboxRepository.append(new EventEnvelope<>(
         UUID.randomUUID(),
-        DemoCreatedEvent.EVENT_TYPE,
         event,
         Instant.now()
     ));
