@@ -42,4 +42,21 @@ CREATE TABLE IF NOT EXISTS inbox_message
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4;
 
+CREATE TABLE IF NOT EXISTS workflow_execution
+(
+    execution_id VARCHAR(64) PRIMARY KEY,
+    workflow_name VARCHAR(128) NOT NULL,
+    status VARCHAR(32) NOT NULL,
+    started_at TIMESTAMP(6) NOT NULL,
+    finished_at TIMESTAMP(6) NULL
+);
+
+CREATE TABLE IF NOT EXISTS workflow_node_execution
+(
+    execution_id VARCHAR(64) NOT NULL,
+    node_id VARCHAR(64) NOT NULL,
+    status VARCHAR(32) NOT NULL,
+    message VARCHAR(255) NULL,
+    PRIMARY KEY (execution_id, node_id)
+);
 

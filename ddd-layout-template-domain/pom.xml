@@ -27,6 +27,11 @@
     </dependency>
     <!-- Lombok dependency end -->
 
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+    </dependency>
+
     <!-- JUnit Jupiter for testing -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
